@@ -26,6 +26,7 @@
                 <th>Estado</th>
                 <th>Acción</th>
             </tr>
+
             @foreach ($tasks as $task)
             <tr>
                 <td class="fw-bold">{{$task->title}}</td>
@@ -35,7 +36,7 @@
                     <span class="badge bg-warning fs-6">{{$task->status}}</span>
                 </td>
                 <td>
-                    <a href="" class="btn btn-warning">Editar</a>
+                    <a href="{{route('tasks.edit', $task)}}" class="btn btn-warning">Editar</a>
                     <form action="{{route('tasks.destroy', $task)}}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')

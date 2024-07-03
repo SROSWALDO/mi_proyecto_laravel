@@ -14,7 +14,7 @@ class TaskController extends Controller
      */
     public function index(): View
     {
-        $tasks = Task::latest()->paginate(5);
+        $tasks = Task::latest()->paginate(5);  // variable llamada tasks en donde almacenamos las tareas
         return view('index', ['tasks' => $tasks] );
     }
 
@@ -31,7 +31,7 @@ class TaskController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-
+        // en el store se crea la logica para crear (post)
         $request->validate([
             'title' => 'required',
             'description' => 'required'
@@ -62,6 +62,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task): RedirectResponse
     {
+        //aqui viene la logica para actualizar 
         $task->update($request->all());
         return redirect()->route('tasks.index')->with('success', 'Nueva tarea actualizada exitosamente');
     }
